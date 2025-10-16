@@ -14,6 +14,14 @@ export default defineConfig<TestOptions>({
   retries: 1,
 
   reporter: [
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+      },
+    ],
     ['html'],
     // ['list'],
     ['json', {outputFile: 'test-results/jsonReport.json'}],
@@ -27,6 +35,7 @@ export default defineConfig<TestOptions>({
           : process.env.STAGING === '1' ? 'http://localhost:4202/'
           : 'http://localhost:4200/',
     trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     actionTimeout: 20000,
     navigationTimeout: 25000,
     video: {
