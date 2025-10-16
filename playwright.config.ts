@@ -5,7 +5,7 @@ require('dotenv').config();
 
 export default defineConfig<TestOptions>({
   timeout: 40000,
-  globalTimeout: 120000,
+  // globalTimeout: 60000,
   expect: {
     timeout: 2000,
     toHaveScreenshot: {maxDiffPixels: 50}
