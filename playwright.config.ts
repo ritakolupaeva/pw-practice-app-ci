@@ -23,7 +23,6 @@ export default defineConfig<TestOptions>({
 
         // Set your Argos token (required if not using GitHub Actions).
         token: "argos_aafa8bef04cd853ee8db65eb2614acf883",
-        
       },
     ],
     ['html'],
